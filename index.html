@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <style>
+      .objeto{
+        display: flex;
+        flex: auto;
+        justify-content: center;
+      }
+      .imagen{
+        height: 200px;
+        width: 200px;
+        padding: 10px;
+      }
+      .titulo1{
+        display: flex;
+        flex: auto;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+
+<div onchange="Form()">
+  <h1>Mostrando imagen seleccionada</h1>
+  <div >
+    <input id="file-upload" type="file" multiple accept="image/*" />
+    <button onclick="SubirImagen()" >Enviar</button>
+  </div>
+  <hr>
+  <h4 class="titulo1">Imagenes</h4>
+  <div id="zona" class="objeto" >
+  </div>
+
+</div>
+
+    <!-- You can also require other files to run in this process -->
+    <script src="./renderer.js"></script>
+<script>
+  function SubirImagen() {
+    var imagen = document.getElementById("file-upload").files;
+    let html = '';
+    if (imagen.length < 4) {
+      for (let i = 0; i < imagen.length; i++){
+        let ruta = imagen[i].path;
+        html +=`
+          <img src="${ruta}" class="imagen">
+        `
+      }
+      document.getElementById("zona").innerHTML = html;
+    }else{
+      alert("te estas pasando")
+    }
+  }
+
+
+</script>
+  </body>
+</html>
